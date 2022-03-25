@@ -1,5 +1,5 @@
-
+<h2>Dentist List</h2>
 <% @dentists.each do |dentist| %>
-    <%=dentist.name%> <br>
+    <p><%=dentist.name%></p> 
 <% end %>
 <%= link_to "New Dentist","/dentists/new" %>
