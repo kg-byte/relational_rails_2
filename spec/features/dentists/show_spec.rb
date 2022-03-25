@@ -38,7 +38,7 @@ RSpec.describe 'dentist index page' do
     
     expect(page).to_not have_content(@dentist3.name)
     expect(page).to_not have_content(@dentist.rating)
-  save_and_open_page
+
   end
 
 

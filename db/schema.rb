@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2022_03_25_045550) do
     t.string "referred_by"
     t.boolean "referred_by_another_patient"
     t.bigint "dentist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["dentist_id"], name: "index_patients_on_dentist_id"
   end
 

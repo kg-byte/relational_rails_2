@@ -7,6 +7,8 @@ class CreatePatients < ActiveRecord::Migration[5.2]
       t.string :referred_by
       t.boolean :referred_by_another_patient
       t.references :dentist, foreign_key: true
+
+      t.timestamps
     end
   end
 end
