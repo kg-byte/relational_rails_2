@@ -22,7 +22,7 @@ RSpec.describe Dentist, type: :model do
       @dentist3 = Dentist.create!(name:"Just Dental", max_patient_capacity:5, created_at: '2022-03-03', accepting_new_patient: true, hours: 'M-F, 9am - 7pm', rating: 3.5)
     end 
     it 'sorts dentists by the most recently created' do 
-      expect(Dentist.orer_by_created_at).to eq([@dentist, @dentist3, @dentist2])
+      expect(Dentist.order_by_created_at).to eq([@dentist, @dentist3, @dentist2])
 
     end 
   end
