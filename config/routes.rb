@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   get 'dentists', to: 'dentists#index'
   get 'dentists/:id', to: 'dentists#show'
   get 'patients', to:'patients#index'
+  get 'patients/:id', to: 'patients#show'
+
 end
