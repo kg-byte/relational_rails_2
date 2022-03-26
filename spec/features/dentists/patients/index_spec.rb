@@ -22,7 +22,6 @@ RSpec.describe 'patient index page' do
     expect(page).to have_content(@patient2.referred_by)
     expect(page).to have_content(@patient2.referred_by_another_patient)
     expect(page).to have_content(@patient2.dentist_id)
-
   end
 
 
