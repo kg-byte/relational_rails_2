@@ -50,4 +50,13 @@ RSpec.describe 'dentist index page' do
     
     expect(page).to have_content(@dentist2.patient_count)
   end 
+
+  it 'has a link to current patients of the dentist' do 
+    visit "/dentists/#{@dentist.id}"
+    click_on "Patients of #{@dentist.name}"
+
+    expect(current_path).to eq("/dentists/#{@dentist.id}/patients")
+
+
+  end 
 end 
