@@ -1,5 +1,5 @@
 <h2>Dentist List</h2>
 <% @dentists.each do |dentist| %>
-    <p><%=dentist.name%></p> 
+    <p><%=dentist.name%> <%=dentist.nice_date %></p> 
 <% end %>
 <%= link_to "New Dentist","/dentists/new" %>
