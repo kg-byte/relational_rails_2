@@ -10,4 +10,8 @@ class Dentist  < ApplicationRecord
   def nice_date
     self.created_at.strftime("%Y-" "%m-" "%d")
   end
+
+  def patient_count
+    self.patients.count
+  end
 end

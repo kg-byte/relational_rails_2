@@ -41,5 +41,13 @@ RSpec.describe 'dentist index page' do
 
   end
 
+  it 'displays the number of patients of a dentist' do 
+    visit "/dentists/#{@dentist.id}"
 
+    expect(page).to have_content(@dentist.patient_count)
+
+    visit "/dentists/#{@dentist2.id}"
+    
+    expect(page).to have_content(@dentist2.patient_count)
+  end 
 end 

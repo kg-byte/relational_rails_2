@@ -5,5 +5,6 @@ class DentistsController < ApplicationController
 
   def show
     @dentist = Dentist.find(params[:id])
+    @patient_count = @dentist.patient_count
   end 
 end 
