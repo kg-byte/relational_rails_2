@@ -16,4 +16,19 @@ RSpec.describe 'dentist index page' do
     expect(page).to have_content(@dentist3.name)
   end
 
+  it 'displays dentists by most recently created' do 
+    visit "/dentists"
+
+    expect(@dentist.name).to appear_before(@dentist3.name)
+    expect(@dentist3.name).to appear_before(@dentist2.name)
+    
+    expect_1 = "Created on: #{@dentist.nice_date}"
+    expect_2 = "Created on: #{@dentist2.nice_date}"
+    expect_3 = "Created on: #{@dentist3.nice_date}"
+    expect(page).to have_content(expect_1)
+    expect(page).to have_content(expect_2)
+    expect(page).to have_content(expect_3)
+  end 
+
+
 end 

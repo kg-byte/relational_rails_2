@@ -6,4 +6,12 @@ class Dentist  < ApplicationRecord
   def self.order_by_created_at
     self.all.order(created_at: :desc)
   end 
+
+  def nice_date
+    self.created_at.strftime("%Y-" "%m-" "%d")
+  end
+
+  def patient_count
+    self.patients.count
+  end
 end
