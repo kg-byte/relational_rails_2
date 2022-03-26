@@ -9,7 +9,7 @@ RSpec.describe 'the Dentist creation' do
 		expect(current_path).to eq('/dentists/new')
 	end 
 
-	xit 'creates new dentist' do 
+	it 'creates new dentist' do 
 		visit '/dentists/new'
 
 		fill_in('Name', with: 'New Dental')
