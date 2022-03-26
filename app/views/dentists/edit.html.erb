@@ -1,0 +1,13 @@
+<%= form_with url: "/dentists/#{@dentist.id}", method: :patch, local:true do |f|%>
+	<%= f.label :name %>
+	<%= f.text_area :name %>
+	<%= f.label :max_patient_capacity %>
+	<%= f.text_area :max_patient_capacity %>
+	<%= f.label :accepting_new_patient %>
+	<%= f.text_area :accepting_new_patient %>
+	<%= f.label :hours %>
+	<%= f.text_area :hours %>
+	<%= f.label :rating %>
+	<%= f.text_area :rating %>
+	<%= f.submit "Update" %>
+<% end %>

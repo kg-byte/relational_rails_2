@@ -16,8 +16,15 @@ class DentistsController < ApplicationController
     redirect_to '/dentists'
   end
 
+  def edit
+    @dentist = Dentist.find(params[:id])
+  end
 
-
+  def update
+    dentist = Dentist.find(params[:id])
+    dentist.update(dentist_params)
+    redirect_to "/dentists/#{dentist.id}"
+  end
 private
 
   def dentist_params
