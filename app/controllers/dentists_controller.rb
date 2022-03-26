@@ -7,4 +7,7 @@ class DentistsController < ApplicationController
     @dentist = Dentist.find(params[:id])
     @patient_count = @dentist.patient_count
   end 
+
+  def new
+  end
 end 
