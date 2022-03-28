@@ -23,7 +23,7 @@ RSpec.describe 'the Dentist Patients creation' do
 		fill_in 'Referred by another patient', with: 'false'
 		click_button('Create Patient')
 
-		save_and_open_page
+		
 		expect(current_path).to eq("/dentists/#{dentist.id}/patients")
 		expect(page).to have_content('Kim Koala')
 	end
