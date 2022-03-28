@@ -1,5 +1,5 @@
-<%= render :partial =>'widgets/links' %>
-<h2> <%= @patients.first.dentist.name %> Patient list</h2>
+
+<h2> <%= @dentist.name %> Patient list</h2>
 <% @patients.each do |patient| %>
     <h4>Patient No. <%=patient.id %></h4>
     <p>Name: <%=patient.name%></p>
@@ -10,3 +10,4 @@
     <p>Dentist id: <%=patient.dentist_id%></p>
 
 <% end %>
+<%= link_to "New Patient","/dentists/#{@dentist.id}/patients/new" %>

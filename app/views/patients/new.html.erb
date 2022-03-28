@@ -1,0 +1,14 @@
+<%= form_for [@dentist, @patient], url: "/dentists/#{@dentist.id}/patients", method: :post, local:true do |f|%>
+	<%= f.label :name %>
+	<%= f.text_area :name %>
+	<%= f.label :age %>
+	<%= f.text_area :age %>
+	<%= f.label :insurance_carrier %>
+	<%= f.text_area :insurance_carrier %>
+	<%= f.label :referred_by %>
+	<%= f.text_area :referred_by %>
+	<%= f.label :referred_by_another_patient %>
+	<%= f.text_area :referred_by_another_patient %>
+	<%= f.submit "Create Patient" %>
+<% end %>
+

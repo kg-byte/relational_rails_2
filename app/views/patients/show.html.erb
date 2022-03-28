@@ -1,4 +1,4 @@
-<%= render :partial =>'widgets/links' %>
+
 <h2>Patient information</h2>
     <h4>Patient No. <%=@patient.id %></h4>
     <p>Name: <%=@patient.name%></p>
@@ -7,3 +7,4 @@
     <p>Referred by: <%=@patient.referred_by%></p>
     <p>Referred by another patient: <%=@patient.referred_by_another_patient%></p>
     <p>Dentist id: <%=@patient.dentist_id%></p>
+<p><%= button_to "Edit", "/patients/#{@patient.id}/edit", method: :get%></p>

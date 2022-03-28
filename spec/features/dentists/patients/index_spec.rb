@@ -26,4 +26,5 @@ RSpec.describe 'patient index page' do
 
 
 
+
 end
