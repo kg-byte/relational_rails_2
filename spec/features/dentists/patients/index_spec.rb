@@ -36,8 +36,25 @@ RSpec.describe 'patient index page' do
     expect(@patient2.name).to appear_before(@patient1.name)
     expect(@patient1.name).to appear_before(@patient3.name)
 
-
   end 
+
+  it 'has a link next to each patient to edit it' do 
+    visit "/dentists/#{@dentist.id}/patients"
+    click_on "Edit #{@patient2.name}"
+
+    expect(current_path).to eq("/patients/#{@patient2.id}/edit") 
+
+    visit "/dentists/#{@dentist.id}/patients"
+    click_on "Edit #{@patient1.name}"
+
+    expect(current_path).to eq("/patients/#{@patient1.id}/edit")
+
+
+    visit "/dentists/#{@dentist.id}/patients"
+    click_on "Edit #{@patient3.name}"
+
+    expect(current_path).to eq("/patients/#{@patient3.id}/edit")
+  end
 
 
 end

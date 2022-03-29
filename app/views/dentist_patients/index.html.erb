@@ -8,6 +8,7 @@
     <p>Referred by: <%=patient.referred_by%></p>
     <p>Referred by anotherpatient: <%=patient.referred_by_another_patient%></p>
     <p>Dentist id: <%=patient.dentist_id%></p>
+    <%= link_to "Edit #{patient.name}","/patients/#{patient.id}/edit" %>
 
 <% end %>
 <%= link_to "New Patient","/dentists/#{@dentist.id}/patients/new" %>
