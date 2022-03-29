@@ -15,8 +15,7 @@ RSpec.describe 'dentist index page' do
     visit "/dentists/#{@dentist.id}"
     
     expect(page).to have_content(@dentist.name)
-    expect(page).to have_content(@dentist.created_at)
-    expect(page).to have_content(@dentist.updated_at)
+    expect(page).to have_content(@dentist.nice_date)
     expect(page).to have_content(@dentist.max_patient_capacity)
     expect(page).to have_content(@dentist.accepting_new_patient)
     expect(page).to have_content(@dentist.hours)
@@ -28,8 +27,7 @@ RSpec.describe 'dentist index page' do
     visit "/dentists/#{@dentist2.id}"
     
     expect(page).to have_content(@dentist2.name)
-    expect(page).to have_content(@dentist2.created_at)
-    expect(page).to have_content(@dentist2.updated_at)
+    expect(page).to have_content(@dentist2.nice_date)
     expect(page).to have_content(@dentist2.max_patient_capacity)
     expect(page).to have_content(@dentist2.accepting_new_patient)
     expect(page).to have_content(@dentist2.hours)
