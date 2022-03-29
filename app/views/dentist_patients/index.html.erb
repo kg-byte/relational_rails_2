@@ -13,3 +13,11 @@
 <% end %>
 <%= link_to "New Patient","/dentists/#{@dentist.id}/patients/new" %>
 <%= link_to "Show Patients in Alphabetical Order","/dentists/#{@dentist.id}/patients?order=alpha" %>
+
+
+<%= form_with url: "/dentists/#{@dentist.id}/patients", method: :get, local:true do |f|%>
+    <%= f.label :show_patients_older_than %>
+    <%= f.text_area :show_patients_older_than %>
+    <%= f.submit "Submit" %>
+<% end %>
+
