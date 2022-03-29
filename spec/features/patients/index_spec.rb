@@ -32,7 +32,20 @@ RSpec.describe 'patient index page' do
     expect(page).to have_content(@patient2.name)
     expect(page).to_not have_content(patient3.name)
   
+  end
 
+
+
+  it 'has a link next to each patient to edit it' do 
+    visit "/patients"
+    click_on "Edit #{@patient.name}"
+
+    expect(current_path).to eq("/patients/#{@patient.id}/edit") 
+
+    visit "/patients"
+    click_on "Edit #{@patient2.name}"
+
+    expect(current_path).to eq("/patients/#{@patient2.id}/edit")
   end
 
 
