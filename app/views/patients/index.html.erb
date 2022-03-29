@@ -9,4 +9,5 @@
     <p>Referred by another patient: <%=patient.referred_by_another_patient%></p>
     <p>Dentist id: <%=patient.dentist_id%></p>
     <%= link_to "Edit #{patient.name}","/patients/#{patient.id}/edit" %>
+    <%= link_to "Delete #{patient.name}","/patients/#{patient.id}", method: :delete %>
 <% end %>

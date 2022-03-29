@@ -58,7 +58,7 @@ RSpec.describe 'dentist index page' do
     expect(page).to have_content(@dentist3.name)
     expect(page).to_not have_content(@dentist.name)
 
-    visit '/dentists'
+ 
     click_on "Delete #{@dentist2.name}"
 
     expect(current_path).to eq ("/dentists")
@@ -66,7 +66,7 @@ RSpec.describe 'dentist index page' do
     expect(page).to_not have_content(@dentist.name)
     expect(page).to_not have_content(@dentist2.name)
 
-    visit '/dentists'
+   
     click_on "Delete #{@dentist3.name}"
 
     expect(current_path).to eq ("/dentists")
