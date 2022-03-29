@@ -1,7 +1,7 @@
 class PatientsController < ApplicationController
 
 	def index
-		@patients = Patient.all
+		@patients = Patient.referral_only
 	end
 
 	def show 

@@ -14,4 +14,8 @@ class Dentist  < ApplicationRecord
   def patient_count
     self.patients.count
   end
+
+  def patients_sort
+    patients.order(:name)
+  end
 end
