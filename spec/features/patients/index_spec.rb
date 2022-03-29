@@ -48,5 +48,22 @@ RSpec.describe 'patient index page' do
     expect(current_path).to eq("/patients/#{@patient2.id}/edit")
   end
 
+  it 'has a link to delete a patient' do 
+    visit '/patients'
+    click_on "Delete #{@patient.name}"
+
+    expect(current_path).to eq('/patients')
+    expect(page).to have_content(@patient2.name)
+    expect(page).to_not have_content(@patient.insurance_carrier)
+
+    click_on "Delete #{@patient2.name}"
+
+    expect(current_path).to eq('/patients')
+    expect(page).to_not have_content(@patient2.name)
+    expect(page).to_not have_content(@patient.name)
+
+
+
+  end 
 
 end

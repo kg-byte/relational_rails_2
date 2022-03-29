@@ -57,4 +57,25 @@ RSpec.describe 'patient index page' do
   end
 
 
+    it 'display records over a given threshold' do 
+
+    visit "/dentists/#{@dentist.id}/patients"
+
+    expect(page).to have_content(@patient1.name)
+    expect(page).to have_content(@patient2.name)
+    expect(page).to have_content(@patient3.name)
+    
+    fill_in 'Show patients older than', with: 18
+    click_on 'Submit'
+    
+    expect(current_path).to eq("/dentists/#{@dentist.id}/patients")
+
+    expect(page).to have_content(@patient1.name)
+    expect(page).to have_content(@patient2.name)
+    expect(page).to_not have_content(@patient3.name)
+
+  end 
+
+
+
 end

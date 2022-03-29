@@ -18,4 +18,8 @@ class Dentist  < ApplicationRecord
   def patients_sort
     patients.order(:name)
   end
+
+  def patients_above_age(input)
+    patients.where("age >#{input}")
+  end
 end

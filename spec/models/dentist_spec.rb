@@ -53,6 +53,10 @@ RSpec.describe Dentist, type: :model do
     it '#patients_sort returns the patients under a dentist in Alphabetical order' do 
       expect(@dentist.patients_sort).to eq([@patient, @patient2])
 
+    end 
+
+    it '#patients_above_age returns only patients above an age' do 
+      expect(@dentist.patients_above_age(30)).to eq([@patient2])
 
     end 
   end 
