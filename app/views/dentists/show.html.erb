@@ -10,3 +10,4 @@
     <p>Updated at: <%=@dentist.updated_at%></p> 
     <p>Total number of patients: <%= @patient_count %></p>
 <p><%= button_to "Edit", "/dentists/#{@dentist.id}/edit", method: :get%></p>
+<p><%= button_to "Delete", "/dentists/#{@dentist.id}", method: :delete%></p>
