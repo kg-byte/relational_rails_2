@@ -1,8 +1,8 @@
 
 <h2>Dentist List</h2>
 <% @dentists.each do |dentist| %>
-    <p>No. <%=dentist.id %> <%=dentist.name%> Created on: <%=dentist.nice_date %>
-    <%= link_to "Edit #{dentist.name}","/dentists/#{dentist.id}/edit" %></p> 
+    <p>No. <%=dentist.id %> <%=dentist.name%> Created on: <%=dentist.nice_date %></p>
+    <p><%= link_to "Edit #{dentist.name}","/dentists/#{dentist.id}/edit" %>
     <%= link_to "Delete #{dentist.name}","/dentists/#{dentist.id}", method: :delete %></p> 
 <% end %>
 <%= link_to "New Dentist","/dentists/new" %>
