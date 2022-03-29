@@ -29,6 +29,7 @@ class DentistsController < ApplicationController
 
   def destroy
     dentist = Dentist.find(params[:id])
+    dentist.patients.destroy_all
     dentist.destroy
     redirect_to "/dentists"
   end
