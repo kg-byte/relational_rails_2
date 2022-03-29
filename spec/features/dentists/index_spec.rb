@@ -33,12 +33,10 @@ RSpec.describe 'dentist index page' do
   end 
 
   it 'has link to edit and update each parent' do 
-    
     visit '/dentists'
     click_on "Edit #{@dentist.name}"
 
     expect(current_path).to eq ("/dentists/#{@dentist.id}/edit")
-
 
     visit '/dentists'
     click_on "Edit #{@dentist3.name}"
@@ -49,8 +47,34 @@ RSpec.describe 'dentist index page' do
     click_on "Edit #{@dentist2.name}"
 
     expect(current_path).to eq ("/dentists/#{@dentist2.id}/edit")
-
-
   end
+
+  it 'has link to delete each dentist' do 
+    visit '/dentists'
+    click_on "Delete #{@dentist.name}"
+
+    expect(current_path).to eq ("/dentists")
+    expect(page).to have_content(@dentist2.name)
+    expect(page).to have_content(@dentist3.name)
+    expect(page).to_not have_content(@dentist.name)
+
+    visit '/dentists'
+    click_on "Delete #{@dentist2.name}"
+
+    expect(current_path).to eq ("/dentists")
+    expect(page).to have_content(@dentist3.name)
+    expect(page).to_not have_content(@dentist.name)
+    expect(page).to_not have_content(@dentist2.name)
+
+    visit '/dentists'
+    click_on "Delete #{@dentist3.name}"
+
+    expect(current_path).to eq ("/dentists")
+    expect(page).to_not have_content(@dentist2.name)
+    expect(page).to_not have_content(@dentist3.name)
+    expect(page).to_not have_content(@dentist.name)
+
+  end 
+
 
 end 
