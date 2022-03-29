@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/dentists', to: 'dentists#create'
   get '/dentists/:id/edit', to: 'dentists#edit'
   patch '/dentists/:id', to: 'dentists#update'
+  delete '/dentists/:id', to: 'dentists#destroy'
   
   get '/patients', to:'patients#index'
   get '/patients/:id', to: 'patients#show'
