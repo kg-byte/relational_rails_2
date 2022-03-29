@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   post '/dentists/:dentist_id/patients', to:'patients#create'
   get '/patients/:id/edit', to: 'patients#edit'
   patch '/patients/:id', to: 'patients#update'
+  delete '/patients/:id', to: 'patients#destroy'
 end

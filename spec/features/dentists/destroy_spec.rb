@@ -17,12 +17,4 @@ RSpec.describe 'destroy a dentist' do
 
 	end
 
-
-
-
-
-
-
-
-
 end
