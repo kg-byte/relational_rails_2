@@ -32,5 +32,25 @@ RSpec.describe 'dentist index page' do
     expect(page).to have_content(expect_3)
   end 
 
+  it 'has link to edit and update each parent' do 
+    
+    visit '/dentists'
+    click_on "Edit #{@dentist.name}"
+
+    expect(current_path).to eq ("/dentists/#{@dentist.id}/edit")
+
+
+    visit '/dentists'
+    click_on "Edit #{@dentist3.name}"
+
+    expect(current_path).to eq ("/dentists/#{@dentist3.id}/edit")
+
+    visit '/dentists'
+    click_on "Edit #{@dentist2.name}"
+
+    expect(current_path).to eq ("/dentists/#{@dentist2.id}/edit")
+
+
+  end
 
 end 
