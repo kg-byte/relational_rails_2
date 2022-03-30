@@ -5,6 +5,5 @@ class Patient  < ApplicationRecord
 
   def self.referral_only
     @patients = self.where("referred_by_another_patient = true")
-    
   end
 end

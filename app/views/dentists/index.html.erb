@@ -6,3 +6,4 @@
     <%= link_to "Delete #{dentist.name}","/dentists/#{dentist.id}", method: :delete %></p> 
 <% end %>
 <%= link_to "New Dentist","/dentists/new" %>
+<%= link_to "Show Dentists by Number of Patients","/dentists?order=patients_number" %>

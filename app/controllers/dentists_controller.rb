@@ -1,6 +1,10 @@
 class DentistsController < ApplicationController
   def index
-    @dentists = Dentist.order_by_created_at
+    if params[:order] == "patients_number"
+      @dentists = Dentist.order_by_patients
+    else 
+      @dentists = Dentist.order_by_created_at
+    end
   end
 
   def show
