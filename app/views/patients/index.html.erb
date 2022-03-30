@@ -11,3 +11,9 @@
     <%= link_to "Edit #{patient.name}","/patients/#{patient.id}/edit" %>
     <%= link_to "Delete #{patient.name}","/patients/#{patient.id}", method: :delete %>
 <% end %>
+
+<%= form_with url: "/patients", method: :get, local:true do |f|%>
+    <%= f.label :search_by_partial_name%>
+    <%= f.text_area :search_by_partial_name%>
+    <%= f.submit "Submit" %>
+<% end %>

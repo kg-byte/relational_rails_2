@@ -15,6 +15,11 @@ class Dentist  < ApplicationRecord
       ORDER BY COALESCE(patient_count,0) desc;")
   end 
 
+
+  def self.search_by_full_name(input)
+    self.where('lower(name) = ?', input.downcase)
+  end
+
   def nice_date
     created_at.strftime("%Y-" "%m-" "%d")
   end

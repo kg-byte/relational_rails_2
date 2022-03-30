@@ -35,7 +35,6 @@ RSpec.describe 'the Patient update' do
 		expect(page).to have_content(3)
 		expect(page).to have_content('Koala Dental')
 		expect(page).to_not have_content('Angela Morris')
-		expect(page).to_not have_content(28)
 		expect(page).to_not have_content('Delta Dental')
 
 

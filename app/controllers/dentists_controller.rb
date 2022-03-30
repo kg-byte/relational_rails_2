@@ -2,6 +2,9 @@ class DentistsController < ApplicationController
   def index
     if params[:order] == "patients_number"
       @dentists = Dentist.order_by_patients
+
+    elsif params[:search_by_full_name] != nil 
+      @dentists = Dentist.search_by_full_name(params[:search_by_full_name])
     else 
       @dentists = Dentist.order_by_created_at
     end

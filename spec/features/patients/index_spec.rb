@@ -61,9 +61,18 @@ RSpec.describe 'patient index page' do
     expect(current_path).to eq('/patients')
     expect(page).to_not have_content(@patient2.name)
     expect(page).to_not have_content(@patient.name)
-
-
-
   end 
+
+
+  it 'searches by partial name' do 
+    visit '/patients'
+    fill_in 'Search by partial name', with: 'Frank'
+
+    click_on "Submit"
+
+    expect(current_path).to eq ('/patients')
+    expect(page).to have_content(@patient2.name)
+    expect(page).to_not have_content(@patient.insurance_carrier)
+  end
 
 end

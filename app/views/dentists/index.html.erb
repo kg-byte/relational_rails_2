@@ -7,3 +7,9 @@
 <% end %>
 <%= link_to "New Dentist","/dentists/new" %>
 <%= link_to "Show Dentists by Number of Patients","/dentists?order=patients_number" %>
+
+<%= form_with url: "/dentists", method: :get, local:true do |f|%>
+    <%= f.label :search_by_full_name%>
+    <%= f.text_area :search_by_full_name%>
+    <%= f.submit "Submit" %>
+<% end %>

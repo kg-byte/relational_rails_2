@@ -89,7 +89,20 @@ RSpec.describe 'dentist index page' do
     expect(current_path).to eq('/dentists')
     expect(@dentist.name).to appear_before(@dentist2.name)
     expect(@dentist2.name).to appear_before(@dentist3.name)
+  end
+
+  it 'searhches by exact name' do 
+     visit '/dentists'
+
+     fill_in 'Search by full name', with: 'Discomfort Dental'
+     click_on 'Submit'
+
+     expect(current_path).to eq('/dentists')
+     expect(page).to have_content(@dentist.name)
+     expect(page).to_not have_content(@dentist2.name)
+     expect(page).to_not have_content(@dentist3.name)
 
   end
+
 
 end 
