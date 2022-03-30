@@ -16,9 +16,11 @@ class DentistsController < ApplicationController
   end 
 
   def new
+    @dentist = Dentist.new
   end
 
   def create
+
     Dentist.create(dentist_params)
     redirect_to '/dentists'
   end
@@ -44,7 +46,7 @@ class DentistsController < ApplicationController
 private
 
   def dentist_params
-    params.permit(:name, :max_patient_capacity, :accepting_new_patient, :hours, :rating)
+    params.require(:dentist).permit(:name, :max_patient_capacity, :accepting_new_patient, :hours, :rating)
   end
 
 end 

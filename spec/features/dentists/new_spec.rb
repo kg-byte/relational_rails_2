@@ -13,8 +13,8 @@ RSpec.describe 'the Dentist creation' do
 		visit '/dentists/new'
 
 		fill_in('Name', with: 'New Dental')
-		fill_in 'max_patient_capacity', with: '10'
-		fill_in 'accepting_new_patient', with: 'true'
+		fill_in 'Max patient capacity', with: '10'
+		check('Accepting new patient', allow_label_click: 'true')
 		fill_in('Hours', with: 'M-F, 9am-6pm')
 		fill_in('Rating', with: '5.0')
 		click_button('Create Dentist')

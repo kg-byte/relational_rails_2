@@ -20,7 +20,7 @@ RSpec.describe 'the Dentist Patients creation' do
 		fill_in 'Age', with: '3'
 		fill_in 'Insurance carrier', with: 'Koala Dental'
 		fill_in 'Referred by', with: 'N/a'
-		fill_in 'Referred by another patient', with: 'false'
+		check('Referred by another patient', allow_label_click: false)
 		click_button('Create Patient')
 
 		
