@@ -20,10 +20,14 @@ RSpec.describe Patient, type: :model do
       @patient2 = @dentist.patients.create!(name:"Frank Poore", age: 36, insurance_carrier: 'Cigna Dental', referred_by: 'Angela Morris', referred_by_another_patient:true)
       @patient3 = @dentist.patients.create!(name:"Bill Barthel", age: 26, insurance_carrier: 'XX Dental', referred_by: 'Frank Poore', referred_by_another_patient:true)
    end
+
     it 'returns referred patients only' do 
       expect(Patient.referral_only).to eq([@patient2, @patient3])
     end
 
+    it 'searches by partial name' do 
+      expect(Patient.search_by_partial_name('frank')).to eq([@patient2])
+    end
 
   end
 

@@ -4,15 +4,28 @@ class Dentist  < ApplicationRecord
   validates :accepting_new_patient, inclusion: [true, false]
 
   def self.order_by_created_at
-    self.all.order(created_at: :desc)
+    order(created_at: :desc)
   end 
 
+  def self.order_by_patients
+    Dentist.find_by_sql(
+      "SELECT * FROM dentists
+      LEFT OUTER JOIN
+      (select dentist_id, count(*) as patient_count from patients group by dentist_id)as tmp_count on(id = dentist_id)
+      ORDER BY COALESCE(patient_count,0) desc;")
+  end 
+
+
+  def self.search_by_full_name(input)
+    self.where('lower(name) = ?', input.downcase)
+  end
+
   def nice_date
-    self.created_at.strftime("%Y-" "%m-" "%d")
+    created_at.strftime("%Y-" "%m-" "%d")
   end
 
   def patient_count
-    self.patients.count
+    patients.count
   end
 
   def patients_sort
@@ -22,4 +35,5 @@ class Dentist  < ApplicationRecord
   def patients_above_age(input)
     patients.where("age >#{input}")
   end
+
 end

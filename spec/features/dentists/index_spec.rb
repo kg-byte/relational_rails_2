@@ -76,5 +76,33 @@ RSpec.describe 'dentist index page' do
 
   end 
 
+  it 'sorts dentists by number of patients' do 
+    @dentist.patients.create!(name:"Angela Morris", age: 28, insurance_carrier: 'Delta Dental', referred_by: 'NA', referred_by_another_patient:false)
+    @dentist.patients.create!(name:"Frank Poore", age: 36, insurance_carrier: 'Cigna Dental', referred_by: 'Angela Morris', referred_by_another_patient:true)
+    @dentist.patients.create!(name:"Bill Barthel", age: 26, insurance_carrier: 'XX Dental', referred_by: 'Frank Poore', referred_by_another_patient:true)
+    @dentist2.patients.create!(name: "Koala 1", age:2, insurance_carrier: 'Koala 1 Dental', referred_by: 'NA', referred_by_another_patient: false)
+    @dentist2.patients.create!(name: "Koala 2", age:3, insurance_carrier: 'Koala 2 Dental', referred_by: 'NA', referred_by_another_patient: false)
+  
+    visit '/dentists'
+    click_on "Show Dentists by Number of Patients"
+
+    expect(current_path).to eq('/dentists')
+    expect(@dentist.name).to appear_before(@dentist2.name)
+    expect(@dentist2.name).to appear_before(@dentist3.name)
+  end
+
+  it 'searhches by exact name' do 
+     visit '/dentists'
+
+     fill_in 'Search by full name', with: 'Discomfort Dental'
+     click_on 'Submit'
+
+     expect(current_path).to eq('/dentists')
+     expect(page).to have_content(@dentist.name)
+     expect(page).to_not have_content(@dentist2.name)
+     expect(page).to_not have_content(@dentist3.name)
+
+  end
+
 
 end 

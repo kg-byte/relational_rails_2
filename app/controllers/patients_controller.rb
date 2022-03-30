@@ -1,7 +1,11 @@
 class PatientsController < ApplicationController
 
 	def index
-		@patients = Patient.referral_only
+    if params[:search_by_partial_name] != nil 
+      @patients = Patient.search_by_partial_name(params[:search_by_partial_name])
+    else 
+		  @patients = Patient.referral_only
+    end
 	end
 
 	def show 

@@ -1,6 +1,13 @@
 class DentistsController < ApplicationController
   def index
-    @dentists = Dentist.order_by_created_at
+    if params[:order] == "patients_number"
+      @dentists = Dentist.order_by_patients
+
+    elsif params[:search_by_full_name] != nil 
+      @dentists = Dentist.search_by_full_name(params[:search_by_full_name])
+    else 
+      @dentists = Dentist.order_by_created_at
+    end
   end
 
   def show
@@ -9,9 +16,11 @@ class DentistsController < ApplicationController
   end 
 
   def new
+    @dentist = Dentist.new
   end
 
   def create
+
     Dentist.create(dentist_params)
     redirect_to '/dentists'
   end
@@ -37,7 +46,7 @@ class DentistsController < ApplicationController
 private
 
   def dentist_params
-    params.permit(:name, :max_patient_capacity, :accepting_new_patient, :hours, :rating)
+    params.require(:dentist).permit(:name, :max_patient_capacity, :accepting_new_patient, :hours, :rating)
   end
 
 end 

@@ -27,7 +27,7 @@ RSpec.describe 'the Patient update' do
 		fill_in 'Age', with: '3'
 		fill_in 'Insurance carrier', with: 'Koala Dental'
 		fill_in 'Referred by', with: 'N/a'
-		fill_in 'Referred by another patient', with: 'false'
+		check('Referred by another patient', allow_label_click: false)
 		click_button 'Update'
 
 		expect(current_path). to eq("/patients/#{patient.id}")
@@ -35,7 +35,6 @@ RSpec.describe 'the Patient update' do
 		expect(page).to have_content(3)
 		expect(page).to have_content('Koala Dental')
 		expect(page).to_not have_content('Angela Morris')
-		expect(page).to_not have_content(28)
 		expect(page).to_not have_content('Delta Dental')
 
 

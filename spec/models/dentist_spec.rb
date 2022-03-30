@@ -27,6 +27,15 @@ RSpec.describe Dentist, type: :model do
     it '#order_by_created_at sorts dentists by the most recently created' do 
       expect(Dentist.order_by_created_at).to eq([@dentist, @dentist3, @dentist2])
     end 
+
+    it 'orders dentists by the number of patients' do 
+      expect(Dentist.order_by_patients).to eq([@dentist, @dentist2, @dentist3])
+    end
+ 
+    it 'searches by full name' do 
+      expect(Dentist.search_by_full_name("Discomfort Dental")).to eq([@dentist])
+    end
+
   end
 
 
@@ -57,7 +66,6 @@ RSpec.describe Dentist, type: :model do
 
     it '#patients_above_age returns only patients above an age' do 
       expect(@dentist.patients_above_age(30)).to eq([@patient2])
-
     end 
   end 
 

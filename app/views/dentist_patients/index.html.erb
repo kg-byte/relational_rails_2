@@ -1,7 +1,7 @@
 
 <h2> <%= @dentist.name %> Patient list</h2>
 <% @patients.each do |patient| %>
-    <h4>Patient No. <%=patient.id %></h4>
+    <h4><%=link_to "Patient No. #{patient.id}", "/patients/#{patient.id}" %></h4>
     <p>Name: <%=patient.name%></p>
     <p>Age: <%=patient.age%></p>
     <p>Insurance carrier <%=patient.insurance_carrier%></p>
