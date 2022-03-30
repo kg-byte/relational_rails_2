@@ -1,7 +1,7 @@
 class PatientsController < ApplicationController
 
 	def index
-    if params[:search_by_partial_name] != nil 
+    if params[:search_by_partial_name] 
       @patients = Patient.search_by_partial_name(params[:search_by_partial_name])
     else 
 		  @patients = Patient.referral_only
@@ -20,12 +20,6 @@ class PatientsController < ApplicationController
   def create
   	@dentist = Dentist.find(params[:dentist_id])
     @patient = @dentist.patients.create(patient_params)
-
-    # @patient= @dentist.patients.create!(name: params_patient[:name],
-    # 																	 age: params_patient[:age],
-    # 																	 insurance_carrier: params_patient[:insurance_carrier],
-    # 																	 referred_by: params_patient[:referred_by],
-    # 																	 referred_by_another_patient: params_patient[:referred_by_another_patient])
     redirect_to "/dentists/#{@dentist.id}/patients"
   end
 
