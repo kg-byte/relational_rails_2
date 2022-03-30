@@ -34,45 +34,54 @@ RSpec.describe 'dentist index page' do
 
   it 'has link to edit and update each parent' do 
     visit '/dentists'
-    click_on "Edit #{@dentist.name}"
+    within("#Dentist-#{@dentist.id}") do 
+      click_on "Edit"
+      expect(current_path).to eq ("/dentists/#{@dentist.id}/edit")
+    end 
 
-    expect(current_path).to eq ("/dentists/#{@dentist.id}/edit")
+     visit '/dentists'
+     within("#Dentist-#{@dentist2.id}") do 
+      click_on "Edit"
+      expect(current_path).to eq ("/dentists/#{@dentist2.id}/edit")
+    end 
 
-    visit '/dentists'
-    click_on "Edit #{@dentist3.name}"
-
-    expect(current_path).to eq ("/dentists/#{@dentist3.id}/edit")
-
-    visit '/dentists'
-    click_on "Edit #{@dentist2.name}"
-
-    expect(current_path).to eq ("/dentists/#{@dentist2.id}/edit")
-  end
+     visit '/dentists'
+     within("#Dentist-#{@dentist3.id}") do 
+      visit '/dentists'
+      click_on "Edit"
+      expect(current_path).to eq ("/dentists/#{@dentist3.id}/edit")
+    end
+  end 
 
   it 'has link to delete each dentist' do 
     visit '/dentists'
-    click_on "Delete #{@dentist.name}"
 
-    expect(current_path).to eq ("/dentists")
-    expect(page).to have_content(@dentist2.name)
-    expect(page).to have_content(@dentist3.name)
-    expect(page).to_not have_content(@dentist.name)
+    within("#Dentist-#{@dentist.id}") do 
+      click_on "Delete"
+    end 
 
- 
-    click_on "Delete #{@dentist2.name}"
+      expect(current_path).to eq ("/dentists")
+      expect(page).to have_content(@dentist2.name)
+      expect(page).to have_content(@dentist3.name)
+      expect(page).to_not have_content(@dentist.name)
+    
+  
+    within("#Dentist-#{@dentist2.id}") do 
+      click_on "Delete"
+    end
+      expect(current_path).to eq ("/dentists")
+      expect(page).to have_content(@dentist3.name)
+      expect(page).to_not have_content(@dentist.name)
+      expect(page).to_not have_content(@dentist2.name)
+    
+      within("#Dentist-#{@dentist3.id}") do 
+        click_on "Delete"
+      end
 
-    expect(current_path).to eq ("/dentists")
-    expect(page).to have_content(@dentist3.name)
-    expect(page).to_not have_content(@dentist.name)
-    expect(page).to_not have_content(@dentist2.name)
-
-   
-    click_on "Delete #{@dentist3.name}"
-
-    expect(current_path).to eq ("/dentists")
-    expect(page).to_not have_content(@dentist2.name)
-    expect(page).to_not have_content(@dentist3.name)
-    expect(page).to_not have_content(@dentist.name)
+      expect(current_path).to eq ("/dentists")
+      expect(page).to_not have_content(@dentist2.name)
+      expect(page).to_not have_content(@dentist3.name)
+      expect(page).to_not have_content(@dentist.name)
 
   end 
 
