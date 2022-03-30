@@ -1,6 +1,7 @@
 
 <h2>Patient list</h2>
 <% @patients.each do |patient| %>
+<section id = "Patient-<%= patient.id %>"
  <h4><%=link_to "Patient No. #{patient.id}", "/patients/#{patient.id}" %></h4>
     <p>Name: <%=patient.name%></p>    
     <p>Age: <%=patient.age%></p>
@@ -8,8 +9,10 @@
     <p>Referred by: <%=patient.referred_by%></p>
     <p>Referred by another patient: <%=patient.referred_by_another_patient%></p>
     <p>Dentist id: <%=patient.dentist_id%></p>
-    <%= link_to "Edit #{patient.name}","/patients/#{patient.id}/edit" %>
-    <%= link_to "Delete #{patient.name}","/patients/#{patient.id}", method: :delete %>
+    <%= link_to "Edit","/patients/#{patient.id}/edit" %>
+    <%= link_to "Delete","/patients/#{patient.id}", method: :delete %>
+    </section>
+    <br>
 <% end %>
 
 <%= form_with url: "/patients", method: :get, local:true do |f|%>

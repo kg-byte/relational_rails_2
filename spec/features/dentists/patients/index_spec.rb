@@ -39,22 +39,20 @@ RSpec.describe 'patient index page' do
   end 
 
   it 'has a link next to each patient to edit it' do 
-    visit "/dentists/#{@dentist.id}/patients"
-    click_on "Edit #{@patient2.name}"
-
-    expect(current_path).to eq("/patients/#{@patient2.id}/edit") 
 
     visit "/dentists/#{@dentist.id}/patients"
-    click_on "Edit #{@patient1.name}"
-
-    expect(current_path).to eq("/patients/#{@patient1.id}/edit")
-
-
+    within("#Patient-#{@patient1.id}") do
+      click_on "Edit"
+      expect(current_path).to eq("/patients/#{@patient1.id}/edit") 
+    end
+    
     visit "/dentists/#{@dentist.id}/patients"
-    click_on "Edit #{@patient3.name}"
-
-    expect(current_path).to eq("/patients/#{@patient3.id}/edit")
+    within("#Patient-#{@patient2.id}") do
+      click_on "Edit"
+      expect(current_path).to eq("/patients/#{@patient2.id}/edit")
+    end
   end
+
 
 
     it 'display records over a given threshold' do 

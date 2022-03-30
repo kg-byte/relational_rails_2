@@ -37,26 +37,33 @@ RSpec.describe 'patient index page' do
 
 
   it 'has a link next to each patient to edit it' do 
-    visit "/patients"
-    click_on "Edit #{@patient.name}"
-
-    expect(current_path).to eq("/patients/#{@patient.id}/edit") 
 
     visit "/patients"
-    click_on "Edit #{@patient2.name}"
+    within("#Patient-#{@patient.id}") do
+      click_on "Edit"
+      expect(current_path).to eq("/patients/#{@patient.id}/edit") 
+    end
+    visit "/patients"
 
-    expect(current_path).to eq("/patients/#{@patient2.id}/edit")
+    within("#Patient-#{@patient2.id}") do
+      click_on "Edit"
+      expect(current_path).to eq("/patients/#{@patient2.id}/edit")
+    end
   end
 
   it 'has a link to delete a patient' do 
     visit '/patients'
-    click_on "Delete #{@patient.name}"
+    within("#Patient-#{@patient.id}") do
+      click_on "Delete"
+    end 
 
     expect(current_path).to eq('/patients')
     expect(page).to have_content(@patient2.name)
     expect(page).to_not have_content(@patient.insurance_carrier)
 
-    click_on "Delete #{@patient2.name}"
+    within("#Patient-#{@patient2.id}") do
+      click_on "Delete"
+    end 
 
     expect(current_path).to eq('/patients')
     expect(page).to_not have_content(@patient2.name)
